@@ -1,0 +1,82 @@
+﻿@model Matrix_Solver.Models.Resistencia
+
+@{
+    ViewBag.Title = "Edit";
+}
+
+<h2>Editar Resistencia</h2>
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        <div class="form-group">
+            <label class="control-label col-md-2" for="Banda1">Color banda 1:</label>
+            <select id="Banda1" class="form-control" name="Banda1">
+                <option value="negro" @(Model.Banda1 == "negro"   ? "selected" : "")>Negro</option>
+                <option value="cafe" @(Model.Banda1 == "cafe"   ? "selected" : "")>Café</option>
+                <option value="rojo" @(Model.Banda1 == "rojo"   ? "selected" : "")>Rojo</option>
+                <option value="naranja @(Model.Banda1 == "naranja"   ? "selected" : "")">Naranja</option>
+                <option value="amarillo" @(Model.Banda1 == "amarillo"   ? "selected" : "")>Amarillo</option>
+                <option value="verde" @(Model.Banda1 == "verde"   ? "selected" : "")>Verde</option>
+                <option value="azul" @(Model.Banda1 == "azul"   ? "selected" : "")>Azul</option>
+                <option value="violeta" @(Model.Banda1 == "violeta"   ? "selected" : "")>Violeta</option>
+                <option value="gris" @(Model.Banda1 == "gris"   ? "selected" : "")>Gris</option>
+                <option value="blanco" @(Model.Banda1 == "blanco"   ? "selected" : "")>Blanco</option>
+            </select>
+        </div>
+
+        <div class="form-group">
+            <label class="control-label col-md-2" for="Banda2">Color banda 2:</label>
+            <select id="Banda2" class="form-control" name="Banda2">
+                <option value="negro" @(Model.Banda2 == "negro" ? "selected" : "")>Negro</option>
+                <option value="cafe" @(Model.Banda2 == "cafe" ? "selected" : "")>Café</option>
+                <option value="rojo" @(Model.Banda2 == "rojo" ? "selected" : "")>Rojo</option>
+                <option value="naranja @(Model.Banda2 == "naranja"   ? "selected" : "")">Naranja</option>
+                <option value="amarillo" @(Model.Banda2 == "amarillo" ? "selected" : "")>Amarillo</option>
+                <option value="verde" @(Model.Banda2 == "verde" ? "selected" : "")>Verde</option>
+                <option value="azul" @(Model.Banda2 == "azul" ? "selected" : "")>Azul</option>
+                <option value="violeta" @(Model.Banda2 == "violeta" ? "selected" : "")>Violeta</option>
+                <option value="gris" @(Model.Banda2 == "gris" ? "selected" : "")>Gris</option>
+                <option value="blanco" @(Model.Banda2 == "blanco" ? "selected" : "")>Blanco</option>
+            </select>
+        </div>
+
+        <div class="form-group">
+            <label class="control-label col-md-2" for="Banda3">Color banda 3:</label>
+            <select id="Banda3" class="form-control" name="Banda3">
+                <option value="negro" @(Model.Banda3 == "negro" ? "selected" : "")>Negro</option>
+                <option value="cafe" @(Model.Banda3 == "cafe" ? "selected" : "")>Café</option>
+                <option value="rojo" @(Model.Banda3 == "rojo" ? "selected" : "")>Rojo</option>
+                <option value="naranja @(Model.Banda3 == "naranja"   ? "selected" : "")">Naranja</option>
+                <option value="amarillo" @(Model.Banda3 == "amarillo" ? "selected" : "")>Amarillo</option>
+                <option value="verde" @(Model.Banda3 == "verde" ? "selected" : "")>Verde</option>
+                <option value="azul" @(Model.Banda3 == "azul" ? "selected" : "")>Azul</option>
+                <option value="violeta" @(Model.Banda3 == "violeta" ? "selected" : "")>Violeta</option>
+                <option value="gris" @(Model.Banda3 == "gris" ? "selected" : "")>Gris</option>
+                <option value="blanco" @(Model.Banda3 == "blanco" ? "selected" : "")>Blanco</option>
+            </select>
+        </div>
+
+        <div class="form-group">
+            <label class="control-label col-md-2" for="Tolerancia">Tolerancia:</label>
+            <select id="Tolerancia" name="Tolerancia" class="form-control">
+                <option value="oro" @(Model.Tolerancia == "oro" ? "selected" : "")>Oro</option>
+                <option value="plata" @(Model.Tolerancia == "plata" ? "selected" : "")>Plata</option>
+            </select>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Registrar" class="btn btn-primary" />
+            </div>
+        </div>
+    </div>
+    <div class="form-group">
+        @Html.ActionLink("Ver lista", "Index")
+    </div>
+}
+

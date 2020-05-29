@@ -1,0 +1,83 @@
+﻿@model Matrix_Solver.Models.Resistencia
+
+@{
+    ViewBag.Title = "Create";
+}
+
+<h2>Registrar</h2>
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+<div class="form-horizontal">
+    <h4>Resistencia</h4>
+    <hr />
+    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+    <div class="form-group">
+        <label class="control-label col-md-2" for="Banda1">Color banda 1:</label>
+        <select id="Banda1" class="form-control" name="Banda1">
+            <option value="negro">Negro</option>
+            <option value="cafe">Café</option>
+            <option value="rojo">Rojo</option>
+            <option value="naranja">Naranja</option>
+            <option value="amarillo">Amarillo</option>
+            <option value="verde">Verde</option>
+            <option value="azul">Azul</option>
+            <option value="violeta">Violeta</option>
+            <option value="gris">Gris</option>
+            <option value="blanco">Blanco</option>
+        </select>
+    </div>
+
+    <div class="form-group">
+        <label class="control-label col-md-2" for="Banda2">Color banda 2:</label>
+        <select id="Banda2" class="form-control" name="Banda2">
+            <option value="negro">Negro</option>
+            <option value="cafe">Café</option>
+            <option value="rojo">Rojo</option>
+            <option value="naranja">Naranja</option>
+            <option value="amarillo">Amarillo</option>
+            <option value="verde">Verde</option>
+            <option value="azul">Azul</option>
+            <option value="violeta">Violeta</option>
+            <option value="gris">Gris</option>
+            <option value="blanco">Blanco</option>
+        </select>
+    </div>
+
+    <div class="form-group">
+        <label class="control-label col-md-2" for="Banda3">Color banda 3:</label>
+        <select id="Banda3" class="form-control" name="Banda3">
+            <option value="negro">Negro</option>
+            <option value="cafe">Café</option>
+            <option value="rojo">Rojo</option>
+            <option value="naranja">Naranja</option>
+            <option value="amarillo">Amarillo</option>
+            <option value="verde">Verde</option>
+            <option value="azul">Azul</option>
+            <option value="violeta">Violeta</option>
+            <option value="gris">Gris</option>
+            <option value="blanco">Blanco</option>
+        </select>
+    </div>
+
+    <div class="form-group">
+        <label class="control-label col-md-2" for="Tolerancia">Tolerancia:</label>
+        <select id="Tolerancia" name="Tolerancia" class="form-control">
+            <option value="oro">Oro</option>
+            <option value="plata">Plata</option>
+        </select>
+    </div>
+
+    <div class="form-group">
+        <div class="col-md-offset-2 col-md-10">
+            <input type="submit" value="Registrar" class="btn btn-primary" />
+        </div>
+    </div>
+</div>
+<div class="form-group">
+    @Html.ActionLink("Ver lista", "Index")
+</div>
+}
+

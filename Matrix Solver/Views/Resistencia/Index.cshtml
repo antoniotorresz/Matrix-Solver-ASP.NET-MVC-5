@@ -1,0 +1,177 @@
+﻿@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Resistencias Guardadas</h2>
+
+<div class="form-group">
+    <table class="table" style="align-items: center" id="tb_ej">
+        <thead>
+            <tr>
+                <th scope="col">Id Resistencia</th>
+                <th scope="col">Banda 1</th>
+                <th scope="col">Banda 2</th>
+                <th scope="col">Banda 3</th>
+                <th scope="col">Tolerancia</th>
+                <th scope="col">Valor Resistencia</th>
+                <th scope="col">Valor Máximo</th>
+                <th scope="col">Valor Mínimo</th>
+                <th scope="col"></th>
+            </tr>
+        </thead>
+        <tbody>
+            @{
+                if (ViewBag.resistencias != null)
+                {
+                    foreach (Matrix_Solver.Models.Resistencia r in ViewBag.resistencias)
+                    {
+                        <tr>
+                            <td>@r.Id</td>
+                            <td>@r.Banda1</td>
+                            <td>@r.Banda2</td>
+                            <td>@r.Banda3</td>
+                            <td>@r.Tolerancia</td>
+                            <td>
+                                @{
+                                    long valor = Convert.ToInt32(@ObtenerValor(r.Banda1) + @ObtenerValor(r.Banda2)) * ObtenerMultiplicador(r.Banda3);
+                                    double vMin = valor - (valor * ObtenerTolerancia(r.Tolerancia));
+                                    double vMax = valor + (valor * ObtenerTolerancia(r.Tolerancia));
+                                }
+                                @valor Ω
+                            </td>
+                            <td>@vMax Ω</td>
+                            <td>@vMin Ω</td>
+                            <td class="acciones">
+                                <ul>
+                                    <li>
+                                        @Html.ActionLink("Editar", //El texto del boton
+                 "Edit", //Metodo de accion
+                 "Resistencia", // Nombre del controlador
+                 new { @id = r.Id }, //Parametros necesarios
+                 new { @class = "editar" } //Atributos HTML
+                 )
+                                    </li>
+
+                                    <li>
+                                        @Html.ActionLink("Eliminar", //El texto del boton
+                 "Delete", //Metodo de accion
+                 "Resistencia", // Nombre del controlador
+                 new { @id = r.Id }, //Parametros necesarios
+                 new { @class = "eliminar" } //Atributos HTML
+                 )
+                                    </li>
+
+
+                                </ul>
+                            </td>
+
+                            <td>
+                            </td>
+                        </tr>
+                    }
+                }
+            }
+        </tbody>
+    </table>
+</div>
+
+<div class="form-group">
+    <button class="btn bg-primary" style="vertical-align:middle">
+        <span>@Html.ActionLink("Agregar resistencia", "Create", null, new { style = "color: #FFFFFF;" })</span>
+    </button>
+</div>
+
+@functions{
+    string ObtenerValor(string color)
+    {
+        string val = "";
+
+        switch (color.ToLower())
+        {
+            case "negro":
+                val = "0";
+                break;
+            case "cafe":
+                val = "1";
+                break;
+            case "rojo":
+                val = "2";
+                break;
+            case "naranja":
+                val = "3";
+                break;
+            case "amarillo":
+                val = "4";
+                break;
+            case "verde":
+                val = "5";
+                break;
+            case "azul":
+                val = "6";
+                break;
+            case "violeta":
+                val = "7";
+                break;
+            case "gris":
+                val = "8";
+                break;
+            case "blanco":
+                val = "9";
+                break;
+            default:
+                val = "-1";
+                break;
+        }
+
+        return val;
+    }
+
+    long ObtenerMultiplicador(string color)
+    {
+        long val = -1;
+
+        switch (color.ToLower())
+        {
+            case "negro":
+                val = 1;
+                break;
+            case "cafe":
+                val = 10;
+                break;
+            case "rojo":
+                val = 100;
+                break;
+            case "naranja":
+                val = 1000;
+                break;
+            case "amarillo":
+                val = 10000;
+                break;
+            case "verde":
+                val = 100000;
+                break;
+            case "azul":
+                val = 1000000;
+                break;
+            case "violeta":
+                val = 10000000;
+                break;
+            case "gris":
+                val = 100000000;
+                break;
+            case "blanco":
+                val = 1000000000;
+                break;
+            default:
+                val = -1;
+                break;
+        }
+
+        return val;
+    }
+
+    double ObtenerTolerancia(string tolerancia)
+    {
+        return Convert.ToDouble((tolerancia.ToLower().Equals("oro")) ? 0.05 : (tolerancia.ToLower().Equals("plata")) ? 0.10 : 0.00);
+    }
+}
